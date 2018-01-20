@@ -1,0 +1,31 @@
+﻿@model Role_Based_Authorization.Models.BlogPost
+<div>
+    <h2>@Html.Label(Model.Title)</h2>
+    <h4>@Html.Label(Model.Description)</h4>
+    <div>
+        @Html.Label(Model.Content)
+    </div>
+    <div>
+        <h3>Comments</h3>
+        @foreach (Role_Based_Authorization.Models.Comment item in Model.Comments)
+        {
+            <div>
+                @Html.Label(item.Text)
+            </div>
+        }
+    </div>
+    <div>
+        @if (Session["userid"] != null)
+        {
+            <form action="~/Post/PostComment" method="post">
+                <input type="text" width="400" name="content" />
+                <input type="hidden" name="postid" value="@Model.Id.ToString()" />
+                <input type="submit" value="Posten" />
+            </form>
+        }
+        else
+        {
+            @Html.ActionLink("Einloggen um Kommentare zu posten", "Index", "Home");
+        }
+    </div>
+</div>

@@ -1,0 +1,36 @@
+﻿@model List<Role_Based_Authorization.Models.BlogPost>
+<div class="row">
+    <div class="col-md-8 col-md-offset-2" style="margin-top:60px;">
+        <form class="well" action="~/Home/Login" method="POST">
+
+            <label>Username</label>
+            <input name="username" type="text" value="" class="form-control" />
+            <br />
+
+            <label>Password</label>
+            <input name="password" type="password" value="" class="form-control" />
+            <br />
+            <br />
+            <button name="submit" value="login" class="btn btn-primary" >Login</button>
+            <br />
+            @Html.Raw(ViewBag.Message)
+        </form>
+    </div>
+    <table class="table">
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Content</th>
+        </tr>
+        @foreach (Role_Based_Authorization.Models.BlogPost item in Model)
+        {
+            <tr>
+                <td>@Html.Label(item.Title)</td>
+                <td>@Html.Label(item.Description)</td>
+                <td>@Html.Label(item.Content)</td>
+                <td>@Html.ActionLink("Show","Index","Post", new {id=item.Id},null)</td>
+            </tr>
+        }
+    </table>
+
+</div>

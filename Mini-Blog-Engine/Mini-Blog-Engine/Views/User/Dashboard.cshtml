@@ -1,0 +1,34 @@
+﻿<div class="row">
+    <h2>User Dashboard</h2>
+
+    <table style="width:100%" class="table">
+        <tr>
+            <th>UserId</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Content</th>
+            <th>CreatedOn</th>
+            <th>ModifiedOn</th>
+            <th>DeletedOn</th>
+        </tr>
+
+        @foreach (List<object> row in ViewBag.table)
+        {
+            <tr>
+                @for (int i = 0; i < 8; i++)
+                {
+                    <td>
+                        @try
+                        {
+                            @row[i]
+                        }
+                        catch (Exception)
+                        {
+                            //{ { null} }
+                        }
+                    </td>
+                }
+            </tr>
+        }
+    </table>
+</div>

@@ -1,0 +1,39 @@
+﻿<div class="row">
+    <h2>Admin Dashboard</h2>
+
+    <table style="width:100%" class="table">
+        <tr>
+            <th>UserId</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Content</th>
+            <th>CreatedOn</th>
+            <th>ModifiedOn</th>
+            <th>DeletedOn</th>
+        </tr>
+
+        @foreach (List<object> row in ViewBag.table)
+        {
+            <tr>
+                @for (int i = 0; i < 8; i++)
+                {
+                    <td>
+                        @try
+                        {
+                            @row[i]
+                        }
+                        catch (Exception)
+                        {
+                            // leer
+                        }
+                    </td>
+                }
+            </tr>
+        }
+    </table>
+
+    <form action="#" method="get">
+        <input type="text" name="searchvalue" value="" placeholder="Search here..." class="form-control input-medium pull-left" />
+        <input type="submit" value="Search" class="form-control btn btn-default pull-left" />
+    </form>
+</div>
